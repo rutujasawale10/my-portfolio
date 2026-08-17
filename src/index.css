@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    background-color: #0B0F17;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+.font-script {
+  font-family: 'Caveat', 'Dancing Script', cursive;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #07090E;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2e1065;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #7C3AED;
+}
+
+/* Glassmorphism helpers with #7C3AED and #A855F7 glow */
+.glass-panel {
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  box-shadow: 0 10px 35px -10px rgba(124, 58, 237, 0.25);
+}
+
+.glass-card {
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.tilt-card {
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease-out;
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: translateY(-6px) rotateX(3deg) rotateY(-3deg) scale(1.01);
+  box-shadow: 0 15px 35px -5px rgba(124, 58, 237, 0.45);
+}
+
+.neon-ring-purple {
+  box-shadow: 0 0 50px rgba(124, 58, 237, 0.6), inset 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 16px rgba(168, 85, 247, 0.7);
+}
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #F8FAFC, #C084FC, #7C3AED, #A855F7);
+}
+
+/* Keyframe Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
