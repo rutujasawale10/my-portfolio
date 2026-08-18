@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { 
   Sparkles, 
@@ -12,12 +12,16 @@ import {
 } from 'lucide-react';
 import { HERO_DATA, SOCIAL_LINKS } from '../data/portfolioData';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import profileImg from '../assets/profile.png';
 
 interface HeroProps {
   onShowToast?: (msg: string) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onShowToast }) => {
+  const [imageError, setImageError] = useState(false);
+  const resolvedProfileImg = profileImg || HERO_DATA.profileImage;
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -187,14 +191,25 @@ export const Hero: React.FC<HeroProps> = ({ onShowToast }) => {
                 transition={{ duration: 0.5 }}
                 className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] rounded-full shadow-[0_0_40px_rgba(124,58,237,0.5)] group border-2 border-purple-500/40"
               >
-                <div className="w-full h-full rounded-full overflow-hidden relative">
-                  <img
-                    src={HERO_DATA.profileImage}
-                    alt="Rutuja Sawale Profile Portrait"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    width={350}
-                    height={350}
-                  />
+                <div className="w-full h-full rounded-full overflow-hidden relative flex items-center justify-center bg-[#15102A]">
+                  {!imageError ? (
+                    <img
+                      src={resolvedProfileImg}
+                      alt="Rutuja Sawale Profile Portrait"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      width={350}
+                      height={350}
+                      onError={() => setImageError(true)}
+                    />
+                  ) : (
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-[#1E143B] via-[#15102A] to-[#0B0F17] flex flex-col items-center justify-center p-4 text-center border border-[#7C3AED]/40">
+                      <div className="w-24 h-24 rounded-full bg-[#7C3AED]/25 border-2 border-[#A855F7] flex items-center justify-center mb-3 shadow-[0_0_25px_rgba(124,58,237,0.4)]">
+                        <span className="text-4xl font-black text-purple-200 font-outfit tracking-wider">RS</span>
+                      </div>
+                      <span className="text-base font-bold text-white font-outfit">Rutuja Sawale</span>
+                      <span className="text-xs font-mono text-purple-300 mt-1">CSE Student & AI/ML</span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
 

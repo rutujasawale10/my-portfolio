@@ -17,7 +17,7 @@ export const HERO_DATA = {
   availability: "Open for AI/ML, Software Engineering & Cloud Internships",
   location: "Amravati, Maharashtra, India",
   email: "rutujasawale92@gmail.com",
-  profileImage: "/profile.png",
+  profileImage: `${import.meta.env.BASE_URL}profile.png`,
   floatingCardTag: "AI/ML • Full Stack • Cloud"
 };
 
@@ -353,5 +353,5 @@ export const SOCIAL_LINKS = {
   email: "rutujasawale92@gmail.com",
   phone: "+91 9022507892",
   whatsapp: "https://wa.me/919022507892",
-  resume: "/resume.pdf"
+  resume: `${import.meta.env.BASE_URL}resume.pdf`
 };
